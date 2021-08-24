@@ -15,18 +15,18 @@
 		<t t-call='web.basic_layout'>
 			<t t-foreach="docs" t-as="doc">
 
-					<t t-set="sales" t-value="env['account.move'].month_or_quarter(doc.date)"/>
-					<t t-set="purchase" t-value="env['account.move'].get_form_purchase_vat(doc.date, '2550M')"/>
-
-					<t t-set='company' t-value="request.env['res.company'].search([('id', '=', doc.company_id.id)])"/>
-					<t t-set='payor' t-value="request.env['res.partner'].search([('id', '=', company.partner_id.id)])"/>
+				<t t-set="sales" t-value="env['account.move'].month_or_quarter(doc.date)"/>
+				<t t-set="purchase" t-value="env['account.move'].get_form_purchase_vat(doc.date, '2550M')"/>
+				<t t-set='company' t-value="request.env['res.company'].search([('id', '=', doc.company_id.id)])"/>
+				<t t-set='payor' t-value="request.env['res.partner'].search([('id', '=', company.partner_id.id)])"/>
+				<t t-set="sum_row" t-value="purchase[1]['Local Goods']+purchase[1]['Foreign Goods']+purchase[1]['Local Services']+purchase[1]['Foreign Services']"/>
 					
 
 					<!--image as background fluid-->
-				<div class="jumbotron jumbotron-fluid" style="background-image: url('/bir_module/static/img/2550Q.jpg');  background-repeat: no-repeat; background-size: 100% 450mm; width:100%; height:450mm;">
+			<div class="jumbotron jumbotron-fluid" style="background-image: url('/bir_module/static/img/2550Q.jpg');  background-repeat: no-repeat; background-size: 100% 450mm; width:100%; height:450mm;">
 
 					<!--upper container-->
-				<div class="container" style="position: relative;text-align: left; color: black; top:120px; width:100%;">-->
+				<div class="container" style="position: relative;text-align: left; color: black; top:120px; width:100%;">
 
 					<div class="left" style="position: relative;bottom: 23px; left:127px;letter-spacing:16px; font-size:21px"><t t-esc="doc.date.strftime('%m %Y')"/></div>
 					<div class="left" style="position: absolute; top:40px; left:81px;letter-spacing:8px; font-size:21px"><t t-esc="payor.vat"/></div>
@@ -52,17 +52,18 @@
 
 							<div class="right" 	style="position: absolute; top: 29px; left: 830px;"><t t-esc="sales[2]"/></div>
 
-							<div class="right" 	style="position: absolute; top: 83px; left: 830px;"><t t-esc="sales[6]"/></div>
+						<div class="right" 	style="position: absolute; top: 83px; left: 830px;"><t t-esc="sales[6]"/></div>
+							
+					</div>
+				
 
-						</div>
-						
 
-							<!--<t t-esc="sales"/>
-							<t t-esc="purchase"/>-->
+							<!--<t t-esc="sales"/>-->
+							<!--<t t-esc="purchase"/>-->
 					
 					
-						<p style="page-break-before:always;"></p>		
-				</div>			
+					<p style="page-break-before:always;"></p>		
+				</div>		
 			</t>
 		</t>
 
