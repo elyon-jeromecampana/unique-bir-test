@@ -18,16 +18,19 @@
 					<t t-set='company' t-value="request.env['res.company'].search([('id', '=', doc.company_id.id)])"/>
 					<t t-set='payor' t-value="request.env['res.partner'].search([('id', '=', company.partner_id.id)])"/>
 					<t t-set='payee' t-value="request.env['res.partner'].search([('id', '=', doc.partner_id.id)])"/>
+					<!--<t t-set='total' t-value='float(qrtr1)'/>-->
 					<!-- <t t-esc="company.name"/><br/>
 					<t t-esc="detail.name"/><br/> -->
-					<t t-set="values" t-value="env['account.move'].get_2307_vals(doc.date, doc.id)"/>
-
-					<!--image as background fluid-->
+					
+					
+						
+				<!--image as background fluid-->
 				<div class="jumbotron jumbotron-fluid" style="background-image: url('/bir_module/static/img/2307.jpg');  background-repeat: no-repeat; background-size: 100% 450mm; width:100%; height:450mm;">
 
 						
-			<!--upper container-->
+					<!--upper container-->
 			<div class="container" style="position: relative;text-align: left; color: black; top:135px; width:100%;">
+
 
 				<div class="left" style="position: relative; top:34px; left:176px; letter-spacing:10.5px; font-size:25px"><t t-esc="payee.vat"/> -000</div>
 				<div class="left" style="position: absolute; top:80px; left:191px;"><t t-esc="payee.name"/></div>
@@ -45,7 +48,7 @@
 					
 					<!-- <t t-esc="doc.company_id.id"/> -->
 					<t t-set="quarter" t-value="env['account.move'].get_bir_quarter(doc.date)"/>
-					<div class="container" style="padding-top:139mm;font-size:15px;padding-left:400px;width:100%;">
+					<div class="container" style="padding-top:140mm;font-size:15px;padding-left:160px;width:100%;">
 						<t t-foreach="request.env['account.move.line'].search([('move_id', '=', doc.id)])" t-as="obj">
 							<div class="row">
 								<t t-set="qrtr1" t-value="'0'"/>
@@ -67,29 +70,37 @@
 									<!-- <t t-set='line' t-value="obj.name"/> -->
 									<t t-foreach="obj.tax_ids" t-as="tax">
 										<t t-if="'EWT' in tax.name">
-											<div style="width:67mm;text-align:center;"><t t-esc="tax.name"/></div>
-											<div style="width:25mm;text-align:center;"></div>
+											<div style="width:30mm;text-align:center;"><t t-esc="tax.name"/></div>
+											<div style="width:50mm;text-align:center;">
+											    <p  t-if="tax.name == 'EWT 1%'">WC158</p>
+											    <p  t-elif="tax.name == 'EWT 2%'">WC 160</p>
+											    <p  t-else="">0</p>
+											    
+											</div>
+
 											<t t-set='percent' t-value="tax.amount"/>
-											<!-- <t t-set="tax_val" t-value="request.env['account.tax'].search([('id', '=', tax.id)])"/> -->
-											<!-- <t t-esc="tax_val.name"/> -->
+											<!--<t t-set="tax_val" t-value="request.env['account.tax'].search([('id', '=', tax.id)])"/> 
+											<t t-esc="tax_val.name"/> -->			
 										</t>
 									</t>
 											
 									<div style="width:32.5mm;text-align:center;"><t t-esc='qrtr1'/></div>
 									<div style="width:32.5mm;text-align:center;"><t t-esc='qrtr2'/></div>
 									<div style="width:32.5mm;text-align:center;"><t t-esc='qrtr3'/></div>
-									<!-- <div style="width:32.5mm;text-align:center;"><t t-esc='int(qrtr1) + int(qrtr2) + int(qrtr3)'/></div> -->
+									<div style="width:32.5mm;text-align:center;"><t t-esc='float(qrtr1) + float(qrtr2) + float(qrtr3)'/></div>
+
 									<div style="width:50mm;text-align:center;">
-										<!-- <t t-esc='(float(qrtr1) + float(qrtr2) + float(qrtr3)) * (abs(float(percent)) / 100)'/> -->
-										<!-- <t t-esc="percent"/> -->
+										<t t-esc='(float(qrtr1) + float(qrtr2) + float(qrtr3)) * (abs(float(percent)) / 100)'/> 
+										<!--<t t-esc="percent"/>-->
 									</div>
+									
 								</t>
 							</div>
 						</t>
 					</div>
-					<!-- <t t-esc='header'/> -->
-					<!-- <t t-esc='line'/> -->
-					<!--<t t-esc='values'/>-->
+					<!--<t t-esc='header'/> 
+					<t t-esc='line'/> 
+					<t t-esc='values'/>-->
 					<p style="page-break-before:always;"></p>
 				</div>
 			</t>
