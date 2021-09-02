@@ -19,6 +19,17 @@ class bir_module(models.Model):
         for record in self:
             record.value2 = float(record.value) / 100
 
+    def get_bir_code(self, value):
+        quarter = 0
+        month = int(value.month)
+
+        if month <= 4: quarter = 1
+        elif month <= 8 and month > 4: quarter = 2
+        elif month <= 12 and month > 8: quarter = 3
+        else: quarter = 4
+
+        return str(quarter)
+
 class setup_2550(models.Model):
     _name = 'bir_module.setup_2550'
     _description = 'Form 2550 Setup for expense'

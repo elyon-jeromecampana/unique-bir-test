@@ -30,6 +30,9 @@
         'reports/bir_form_2550M.xml',
         'reports/bir_form_2550Q.xml',
     ],
+    'qweb': [
+        "static/src/xml/bir_module.xml", # The custom xml file
+    ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

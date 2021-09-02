@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="bir_module_xml">
+   
+    <form>
+        <p>BIR FORM 1702</p>
+            <p>SUMMARY ALPHALIST OF WITHHOLDING TAXES (SAWT)</p>
+             <div class="form-row">
+                <div class="form-group col-md-2">
+                     <span id="test">Month of</span>
+                </div>
+                 <div class="form-group col-md-2">
+                    <select class="form-control-sm disabled-border-color" id="sel1">
+                    <option>March</option>
+                    <option>June</option>
+                    <option>September</option>
+                    <option>December</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-8">
+                     <span id="test"><t t-esc="doc.date.strftime('%m %d %y')"/></span>
+                </div>
+                <div class="form-group col-md-2">
+                    <span id="test">Choose your Quarter</span>
+                </div>
+                <div class="form-group col-md-10">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Quarter 1</a>
+                            <a class="dropdown-item" href="#">Quarter 2</a>
+                            <a class="dropdown-item" href="#">Quarter 3</a>
+                            <a class="dropdown-item" href="#">Quarter 4</a>
+                        </div>
+                    </div>    
+                </div>
+                </div>
+                <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tax Identification Number</th>
+                  <th scope="col">Corporation</th>
+                  <th scope="col">ATC Code</th>
+                  <th scope="col">Amount of Incoming Payment</th>
+                  <th scope="col">Tax Rate</th>
+                  <th scope="col">Amount of Tax Withheld</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="button_operations btn btn-primary mb-4 " style="float: left;">TEST</button>
+          </form>
+        </t>
+</templates>
