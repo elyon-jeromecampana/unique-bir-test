@@ -3,7 +3,6 @@
 
 from odoo import fields, models
 
-
 class BirReports(models.Model):
     _inherit = 'account.move'
 

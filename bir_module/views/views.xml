@@ -2,27 +2,27 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="bir_module.list">
+     <record model="ir.ui.view" id="bir_module.list">
       <field name="name">BIR_module list</field>
       <field name="model">bir_module.bir_module</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
+                <tree>
+                    <field name="name"/>
+                    <field name="value"/>
+                    <field name="value2"/>
+                </tree>
+            </field>
+        </record>
 
-    <record model="ir.ui.view" id="2550_purchases_setup_tree">
-      <field name="name">BIR_module list</field>
-      <field name="model">bir_module.setup_2550</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
+        <record model="ir.ui.view" id="2550_purchases_setup_tree">
+        <field name="name">BIR_module list</field>
+        <field name="model">bir_module.setup_2550</field>
+        <field name="arch" type="xml">    
+              <tree>
+               <field name="name"/>
+              </tree>
+            </field>
+        </record>
 
     <!-- actions opening views on models -->
 
@@ -54,6 +54,12 @@
       </field>
     </record>
  -->
+    <record id="action_bir_mod" model="ir.actions.client">
+    <field name="name">BIR Module</field>
+    <field name="tag">bir_module_module</field> 
+     <field name="target">new</field>
+    </record>
+
 
     <!-- Top menu item -->
     <menuitem name="BIR Module" id="bir_module.menu_root"/>
@@ -61,6 +67,7 @@
     <!-- menu categories -->
     <menuitem name="Menu 1" id="bir_module.menu_1" parent="bir_module.menu_root"/>
     <menuitem name="Configuration" id="bir_module.config" parent="bir_module.menu_root"/>
+    <menuitem name="Report" id="bir_module.menu_2" parent="bir_module.menu_root" action="action_bir_mod"/>
 
     <!-- actions -->
     <menuitem name="List" id="bir_module.menu_1_list" parent="bir_module.menu_1"
@@ -68,5 +75,14 @@
     <menuitem name="2550Q/M Purchases Accounts Setup" id="bir_module" parent="bir_module.config"
               action="2550_purchases_setup"/>
 
+   <template id="assets_backend" inherit_id="web.assets_backend">
+   <xpath expr="." position="inside">
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js">
+     </script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+     <script type="module" src="/bir_module/static/src/js/bir_module.js"></script>
+   </xpath>
+   </template>
   </data>
 </odoo>
