@@ -204,3 +204,13 @@ class bir_reports(models.Model):
                 new_val.append((ewt[0], ewt_amt, abs(float(ewt[2])), ewt[1], ewt[3], ewt[4], ewt[5]))
 
         return new_val
+
+class View(models.Model):
+    _inherit = 'ir.ui.view'
+
+    type = fields.Selection(selection_add=[('map', "Map")])
+
+class ActWindowView(models.Model):
+    _inherit = 'ir.actions.act_window.view'
+
+    view_mode = fields.Selection(selection_add=[('map', "Map")])
